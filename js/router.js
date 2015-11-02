@@ -43,7 +43,8 @@ export default Backbone.Router.extend({
           pictures={this.collection.toJSON()}
           onBackClick={() => this.goto('')}
           onLonePicClick={(id) => this.goto('lone/' + id)}
-          onAddClick={() => this.goto('addNew')}/>;
+          onAddClick={() => this.goto('addNew')}/>
+     );     
         
     });
    },
@@ -55,7 +56,7 @@ export default Backbone.Router.extend({
           <LoneView
            onAddClick={() => this.goto('addNew')}
            onBackClick={() => this.goto('')}
-           onEditClick={() => this.goto('editImage/' + id})
+           onEditClick={() => this.goto('editImage/' + id)}
            images={solo.toJSON()}/>
         );   
       } else {
@@ -82,9 +83,9 @@ export default Backbone.Router.extend({
              let newPhotoLink = document.querySelector('.giveImage').value;
              let newDescription = document.querySelector('.giveDescription').value;
              let newUpload = new PictureModel ({
-              Title: newTitle;
-              Description: newDescription;
-              PhotoLink: newPhotoLink;
+              Title: newTitle,
+              Description: newDescription,
+              PhotoLink: newPhotoLink
             });
 
              newUpload.save();
@@ -107,10 +108,10 @@ export default Backbone.Router.extend({
               objectId: peanutButter,
               Title: newTitle,
               Description: newDescription,
-              PhotoLink: new PhotoLink,
+              PhotoLink: new PhotoLink
             });  
-          }/>
-         );
+          }
+         )/>;
         }, 
 
      start() {
