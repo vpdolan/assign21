@@ -2027,11 +2027,10 @@ html {
 body {
   background: #e2ebf3; }
 
-.app {
-  margin-left: 50px;
-  margin-right: 50px; }
+li {
+  list-style: none; }
 
-h1 {
+h2 {
   background-color: #6600CC;
   border-radius: 20px;
   border: 5px solid #850BFF;
@@ -2039,5 +2038,74 @@ h1 {
   text-align: center;
   height: 90px;
   padding-top: 25px; }
+
+.homePage {
+  width: 100%;
+  list-style: none;
+  text-decoration: none;
+  text-align: center; }
+
+.theme img {
+  width: 1292px;
+  height: 223px;
+  border: 2px solid #850BFF; }
+
+.navBar ul {
+  text-align: center;
+  color: blue; }
+
+.navBar li {
+  display: inline-block;
+  padding-right: 10px;
+  list-style: none; }
+
+.navBar li:hover {
+  color: #6EB7FF; }
+
+.navBar li:active {
+  color: #3366FF; }
+
+.imageSquares {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  list-style: none;
+  margin-top: 45px;
+  margin-left: 90px; }
+  .imageSquares::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.squares {
+  list-style: none;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  overflow: scroll;
+  text-align: center; }
+  .squares:last-child {
+    margin-right: 0; }
+  .squares:nth-child(4n) {
+    margin-right: 0; }
+  .squares:nth-child(4n+1) {
+    clear: left; }
+
+.squares img {
+  height: 275px;
+  width: 250px;
+  overflow: scroll; }
+
+.squares img:hover {
+  border: 4px solid red; }
+
+.squares img:active {
+  border: 4px solid #FFFF00; }
+
+.footer {
+  font-size: .75em;
+  color: red;
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

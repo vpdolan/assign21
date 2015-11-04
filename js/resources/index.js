@@ -1,7 +1,9 @@
 import PicturesCollection from './pictures_collection';
-import PictureModel from './picutre_model';
+import PictureModel from './picture_model';
+import 
 
 export {
   PicturesCollection,
-  PictureModel
+  PictureModel,
+
 };

@@ -1,6 +1,7 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 
-let AddNewView = Reach.createClass({
+let AddNewView = React.createClass({
   addBackHandler() {
     this.props.onBackClick();
   },
@@ -14,37 +15,65 @@ let AddNewView = Reach.createClass({
   },
 
   render () {
-    return 
+    return (
   <div className="newPicView">
 
-     <div className="header">
-
-      <img src="http://www.google.com/imgres?imgurl=http://previews.123rf.com/images/samot/samot1401/samot140100048/25407508-White-wine-with-barrel-on-vineyard-in-Chianti-Tuscany-Italy-Stock-Photo.jpg&imgrefurl=http://www.123rf.com/photo_25407508_white-wine-with-barrel-on-vineyard-in-chianti-tuscany-italy.html&h=866&w=1300&tbnid=RWymPDoaRmmeIM:&docid=EahAzMUPrjI7WM&ei=TbY2VurZK4rrmAG84qnYBw&tbm=isch&ved=0CDAQMygPMA9qFQoTCKq07bnF8MgCFYo1JgodPHEKew"/>
-
-      </div>
+     <div className="theme">
+        <img src="http://www.amorosa.it/images/h-vineyard-cellar.jpg"/>
+     </div>
 
      <div className="navBar">
       <ul>
-       <li onClick{() => this.addBackHandler()}<button>Home</button>/li>         
-       <li onClick{() => this.addPicClickHandler()}<button>Upload New Photo</button></li>        
+       <li onClick={() => this.addBackHandler()}>
+        <button>Home</button>
+       </li>
+       <li onClick={() => this.addPicClickHandler()}>
+        <button>Grape</button>
+        </li>
+       <li onClick={() => this.addBackClickHandler()}>
+        <button>About</button>
+        </li>
+       <li onClick={() => this.addBackClickHandler()}>
+        <button>Contact</button>  
+       </li>
       </ul>       
      </div>
 
 
-     <form className="newPicForm">
-       input type="text" placeholder="Title:" className="giveTitle"></input>
-       input type="text" placeholder="Photo URL:" className="givePhoto"></input>
-       <textarea type="text" placeholder="Description:" className="giveDescription" min="35" max="75"></textarea>
-     </form>
      
      
-     <div className="usersubmits">
+     
+     <div className="userSubmits">
       <button onClick={() => this.addBackHandler()}>Cancel</button>
-      <button onClick={() => this.addUploadHandler()}>Upload Photo</button>
+      <button onClick={() => this.addUploadHandler()}>Wine Details</button>
      </div>
+     <hr/>
+
+     <fieldset>
+          <legend>Information</legend>
+            <label>Title:<br/>
+             <input type="text" name="title"/></label>
+              <br/>
+            <label>Description:<br/>
+             <input type="text" name="description"/></label>
+              <br/>
+            <label>Terrior:<br/>
+             <input type="text" name="terroir"/></label>
+              <br/>
+             <label>Photo Url:<br/>
+              <input type="text" className="givePhoto" min="75" max="150"></input>
+              </label> 
+              <br/>        
+            <p>Please tell us which wines interest you!</p> 
+
+            <textarea name="comments" cols="25" rows="5">Enter your comments...</textarea>
+            <button onClick ={this.addBackHandler} className='save'>Save</button>             
+            <br/>
+      </fieldset>               
      
      <div className="footer">
-       <p>My Name Year</p>
+       <p>Vince Dolan</p>
+       <p>2015</p>
      </div>
      
   </div>
@@ -54,3 +83,6 @@ let AddNewView = Reach.createClass({
 });
 
 export default AddNewView; 
+
+
+ 

@@ -14,54 +14,61 @@ let LoneView = React.createClass({
   },
 
   render(data) {
-return (
-  <div className="lonePicPage" key={this.props.photos.objectId}>
+    console.log(this.props);
 
-    <div className="header">
+return (
+  <div className="lonePicPage" key={this.props.images.objectId}>
+
       <div className="theme">
-        <img src="http://www.google.com/imgres?imgurl=http://previews.123rf.com/images/samot/samot1401/samot140100048/25407508-White-wine-with-barrel-on-vineyard-in-Chianti-Tuscany-Italy-Stock-Photo.jpg&imgrefurl=http://www.123rf.com/photo_25407508_white-wine-with-barrel-on-vineyard-in-chianti-tuscany-italy.html&h=866&w=1300&tbnid=RWymPDoaRmmeIM:&docid=EahAzMUPrjI7WM&ei=TbY2VurZK4rrmAG84qnYBw&tbm=isch&ved=0CDAQMygPMA9qFQoTCKq07bnF8MgCFYo1JgodPHEKew"/>
+        <img src="http://www.amorosa.it/images/h-vineyard-cellar.jpg"/>
       </div>
       
       <div className="navBar">
          <ul>
-           <li onClick{() => this.addBackHandler()}<button>Home</button>/li>
-           <li onClick{() => this.addPicClickHandler()}<button>Upload New Photo</button></li>
+           <li onClick={() => this.addBackHandler()}>
+            <button>Home</button>
+           </li>
+           <li onClick={() => this.addBackHandler()}>
+              <button>Grape</button>
+              </li>
+            <li onClick={() => this.addBackHandler()}>
+               <button>About</button>
+               </li>                
+            <li onClick={() => this.addPicClickHandler()}>
+               <button>Upload New Photo</button>
+               </li>
+            <li onClick={() => this.addBackHandler()}>
+               <button>Update Wine Info</button>
+               </li>   
          </ul>
         </div>
-       </div>
 
-       <div className="singlesquare">
-        <img className="singleimage" src={this.props.photos.PhotoLink}/> 
-       </div>
-       
-       <div className="photodescription">
-
-         <div className="title">{this.props.photos.Title}
-         </div>
-         <div className="description">{this.props.photos.Description}
-         </div>
-
-       <div className="navBarBtns">
+       <div className="navBar">
          <button onClick={() => this.addBackHandler()}>Back Home</button>  
-         <button onClick={() => this.addEditHandler()}>EditSubmission</button> 
+         <button onClick={() => this.addEditHandler()}>Cancel</button> 
        </div>
-      </div>
+
+     <form className="newPicForm">
+       <input type="text" placeholder="Title:" className="giveTitle"></input>
+       <input type="text" placeholder="Photo URL:" className="givePhoto" min="75" max="150">
+        </input>
+         <br/>
+       <input type="text" placeholder="Description:" className="giveDescription" min="25" max="55">
+         </input>
+       <input type="text" placeholder="Terroir:"  className="giveTerrior"></input>
+       <input type="text" placeholder="Best Served With:" className="giveFood" min="30" max="85">
+         </input>  
+     </form>
      
       <div className="footer">
-        <p>My Name Year</p>
+        <p>Vince Dolan</p>
+        <p>2015</p>
       </div>
       
     </div>
-   </div>
    
    );
   }
  });   
-            
 
-             
-
-  }  
-  }  
-  }
-})
+export default LoneView;

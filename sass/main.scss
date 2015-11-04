@@ -7,15 +7,11 @@ body {
 
 }
 
-.app {
-  margin-left: 50px;
-  margin-right: 50px;
-  //border: 5px solid #850BFF;
-  //border-radius: 20px;
-  //margin-top: 
+li {
+  list-style: none;
 }
 
-h1 {
+h2 {
   background-color: #6600CC;
   border-radius: 20px;
   border: 5px solid #850BFF;
@@ -24,5 +20,100 @@ h1 {
   height: 90px;
   padding-top: 25px;
 
+}
+
+.homePage {
+  //margin-left: 50px;
+  //margin-right: 50px;
+  width: 100%;
+  list-style: none;
+  text-decoration: none;
+  //border: 5px solid #850BFF;
+  //border-radius: 20px;
+  //margin-top: 
+  //margin: 0 auto;
+  text-align: center;
+
+}
+
+.theme img {
+  width: 1292px;
+  height: 223px;
+  border: 2px solid #850BFF;
+ 
+}
+
+.navBar {
+  ul {
+    text-align: center;
+    color: blue;
+  
+  }
+
+  li {
+    display: inline-block;
+    padding-right: 10px;
+    list-style: none;
+  }  
+    
+    li:hover{
+        color: #6EB7FF;
+    }
+
+    li:active {
+      color: #3366FF;
+    }
+  }
+
+
+.imageSquares {
+  @include outer-container;
+  //display: block;
+  //float: left;
+  list-style: none;
+  margin-top: 45px;
+  margin-left: 90px;
+        
+  
+}
+
+.squares {
+  list-style: none;
+  @include span-columns (3);
+   @include omega (4n);
+   //margin-bottom: 5px;
+   //min-height: 175px;
+   //max-height: 400px;
+   //height: 225px;
+   overflow: scroll;
+   text-align: center;
+
+ }
+   
+   .squares img {
+    height: 275px;    
+    width: 250px;
+    overflow: scroll;
+    
+   }
+
+   .squares img:hover {
+    border: 4px solid red;
+   }
+
+   .squares img:active {
+    border: 4px solid #FFFF00;
+   }
+
+   form {
+    
+   }
+ 
+
+            
+.footer {
+  font-size: .75em;
+  color: red;
+  text-align: center;
 
 }

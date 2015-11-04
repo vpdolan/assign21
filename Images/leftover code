@@ -1,0 +1,9 @@
+<div className="photodescription">
+
+         <div className="title">{this.props.images.Title}
+         </div>
+         <div className="description">{this.props.images.Description}
+         </div>
+         <div className="singlesquare">
+        <img className="singleimage" src={this.props.images.PhotoLink}/> 
+       </div>
