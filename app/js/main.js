@@ -178,6 +178,8 @@ var _underscore = require('underscore');
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
+require('./ajax_setup');
+
 var _resourcesSingle_model = require('./resources/single_model');
 
 var _resourcesSingle_model2 = _interopRequireDefault(_resourcesSingle_model);
@@ -206,13 +208,13 @@ var _viewsAdd_view = require('./views/add_view');
 
 var _viewsAdd_view2 = _interopRequireDefault(_viewsAdd_view);
 
-exports['default'] = _backbone2['default'].Router.extend({
+var Router = _backbone2['default'].Router.extend({
 
   routes: {
-    "": "showHome",
-    "lone/:id": "showLoneView",
-    "addNew": "showAddNewPictures",
-    "edit/:id": "showEditPictures"
+    "": "home",
+    "Single/:id": "showSingle",
+    "addForm": "showformAdd",
+    "editForm/:id": "showformEdit"
   },
 
   initialize: function initialize(appElement) {
@@ -221,127 +223,160 @@ exports['default'] = _backbone2['default'].Router.extend({
     this.model = new _resourcesSingle_model2['default']();
   },
 
-  goto: function goto(route) {
-    this.navigate(route, {
-      trigger: true
-    });
+  start: function start() {
+    _backbone2['default'].history.start();
+    return this;
   },
 
   render: function render(component) {
     _reactDom2['default'].render(component, this.el);
   },
 
-  showHome: function showHome() {
+  goto: function goto(route) {
+    this.navigate(route, { trigger: true });
+  },
+
+  //Home-View Route
+
+  home: function home() {
     var _this = this;
 
     this.collection.fetch().then(function () {
-      console.log(_this.collection.toJSON());
       _this.render(_react2['default'].createElement(_viewsHome_view2['default'], {
-        pictures: _this.collection.toJSON(),
-        onBackClick: function () {
-          return _this.goto('');
+        id: _this.collection.objectId,
+        onImageSelect: function (id) {
+          return _this.goto('Single/' + id);
         },
-        onLonePicClick: function (id) {
-          return _this.goto('single/' + id);
-        },
-        onAddClick: function () {
-          return _this.goto('add');
+        data: _this.collection.toJSON(),
+        AddBtnClick: function () {
+          return _this.goto('addForm');
         } }));
     });
   },
 
-  showSingleView: function showSingleView(id) {
+  //Single-View Route
+
+  showSingle: function showSingle(id) {
     var _this2 = this;
 
-    var solo = this.collection.get(id);
-    console.log(solo);
+    var photos = this.collection.get(id);
 
-    if (solo) {
+    if (photos) {
       this.render(_react2['default'].createElement(_viewsSingle_view2['default'], {
-        onAddClick: function () {
-          return _this2.goto('addNew');
+        data: photos.toJSON(),
+        editBtnClick: function (id) {
+          return _this2.goto('editForm/' + id);
         },
-        onBackClick: function () {
+        homeBtnClick: function () {
           return _this2.goto('');
-        },
-        onEditClick: function () {
-          return _this2.goto('editImages/' + id);
-        },
-        images: solo.toJSON() }));
+        } }));
     } else {
-      solo = this.image.add({ objectId: id });
-      solo.fetch().then(function () {
+      photos = this.collection.add({ objectId: id });
+      photos.fetch().then(function () {
         _this2.render(_react2['default'].createElement(_viewsSingle_view2['default'], {
-          onAddClick: function () {
-            return _this2.goto('addNew');
+          data: photos.toJSON(),
+          editBtnClick: function (id) {
+            return _this2.goto('editForm/' + id);
           },
-          onBackClick: function () {
+          homeBtnClick: function () {
             return _this2.goto('');
-          },
-          onEditClick: function () {
-            return _this2.goto('editImage/' + id);
-          },
-          images: solo.toJSON() }));
+          } }));
       });
     }
   },
 
-  showAddNewPictures: function showAddNewPictures() {
+  //Edit-View Route
+
+  showformEdit: function showformEdit(id) {
     var _this3 = this;
 
-    this.render(_react2['default'].createElement(_viewsAdd_view2['default'], {
-      onAddClick: function () {
-        return _this3.goto('addNew');
-      },
-      onBackClick: function () {
-        return _this3.goto('');
-      },
-      onUploadClick: function () {
-        var newTitle = document.querySelector('.giveTitle').value;
-        var newPhotos = document.querySelector('.givePhotos').value;
-        var newDescription = document.querySelector('.giveDescription').value;
-        var newUpload = new PictureModel({
-          Title: newTitle,
-          Description: newDescription,
-          Photos: newPhotos
-        });
+    var getinfo = this.collection.get(id);
 
-        newUpload.save();
-        _this3.goto('');
-      } }));
+    if (getinfo) {
+      console.log('x', getinfo.toJSON());
+      this.render(_react2['default'].createElement(_viewsEdit_view2['default'], {
+        homeBtnClick: function () {
+          return _this3.goto('');
+        },
+        data: getinfo.toJSON(),
+        saveBtnClick: function (id, Title, Photos, Terrior, Food, ServeTemp, Description) {
+          return _this3.saveEditedData(id, Title, Photos, Terrior, Food, ServeTemp, Description);
+        } }));
+    } else {
+      getinfo = this.collection.add({ objectId: id });
+      getinfo.fetch().then(function () {
+        console.log('y', getinfo.toJSON());
+        _this3.render(_react2['default'].createElement(_viewsEdit_view2['default'], {
+          homeBtnClick: function () {
+            return _this3.goto('');
+          },
+          data: getinfo.toJSON(),
+          saveBtnClick: function (id, Title, Photos, Terrior, Food, ServeTemp, Description) {
+            return _this3.saveEditedData(id, Title, Photos, Terrior, Food, ServeTemp, Description);
+          } }));
+      });
+    }
+    console.log('logging to JSON', getinfo.toJSON());
   },
 
-  showEditPictures: function showEditPictures(id) {
+  //Updating Edits Route
+
+  saveEditedData: function saveEditedData(id, Title, Photos, Terrior, Food, ServeTemp, Description) {
     var _this4 = this;
 
-    //let peanutButter = id;
-    this.render(_react2['default'].createElement(_viewsEdit_view2['default'], {
-      onAddClick: function () {
-        return _this4.goto('addNew');
-      },
-      onBackClick: function (id) {
-        return _this4.goto('');
-      },
-      onSaveClick: function (id) {
-        var newTitle = document.querySelector('.giveTitle').value;
-        var newDescription = document.querySelector('.giveDescription').value;
-        var newPhotos = document.querySelector('.givePhotos').value;
-        var editUpload = new PictureModel({
-          objectId: peanutButter
-        });
-      } }));
+    this.collection.get(id).save({
+      objectId: id,
+      Title: Title,
+      Photos: Photos,
+      Terrior: Terrior,
+      Food: Food,
+      ServeTemp: ServeTemp,
+      Description: Description
+    }).then(function () {
+      alert('Changes Updated');
+      _this4.goto('');
+    });
   },
 
-  //Title: newTitle,
-  //Description: newDescription,
-  //Photos: new Photos
-  start: function start() {
-    _backbone2['default'].history.start();
+  //Add-View Route
+
+  showformAdd: function showformAdd() {
+    var _this5 = this;
+
+    this.render(_react2['default'].createElement(_viewsAdd_view2['default'], {
+      data: this.collection.toJSON(),
+      homeBtnClick: function () {
+        return _this5.goto('');
+      },
+      saveBtnClick: function () {
+        var newUserTitle = document.querySelector('.title').value;
+        var newUserPhotos = document.querySelector('.photos').value;
+        var newUserTerrior = document.querySelector('.terrior').value;
+        var newUserFood = document.querySelector('.food').value;
+        var newUserServeTemp = document.querySelector('.servetemp').value;
+        var newUserDescription = document.querySelector('.description').value;
+        console.log('new user', newUserTitle);
+
+        var model = new _resourcesSingle_model2['default']({
+          Title: newUserTitle,
+          Photos: newUserPhotos,
+          Terrior: newUserTerrior,
+          Food: newUserFood,
+          ServeTemp: Number(newUserServeTemp),
+          Description: newUserDescription
+        });
+
+        model.save().then(function () {
+          alert('Your Selection Has Been Added. Thank you!');
+          _this5.goto('');
+        });
+      } }));
   }
 });
+exports['default'] = Router;
 module.exports = exports['default'];
 
-},{"./resources/pictures_collection":5,"./resources/single_model":6,"./views/add_view":8,"./views/edit_view":9,"./views/home_view":10,"./views/single_view":11,"./views/spinner":12,"backbone":13,"jquery":15,"react":173,"react-dom":17,"underscore":174}],8:[function(require,module,exports){
+},{"./ajax_setup":1,"./resources/pictures_collection":5,"./resources/single_model":6,"./views/add_view":8,"./views/edit_view":9,"./views/home_view":10,"./views/single_view":11,"./views/spinner":12,"backbone":13,"jquery":15,"react":173,"react-dom":17,"underscore":174}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
