@@ -3,9 +3,9 @@ import React from 'react';
 let Spinner=React.createClass({
   render(){
     return (
-      <div>
-        <i className="fa fa-spinner fa-spin"></i>
-      </div>  
+      <h2 class="spinner">
+        <i class="fa fa-spinner fa-spin"></i>
+      </h2>  
    );
   }
 });

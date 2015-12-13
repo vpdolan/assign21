@@ -1,11 +1,11 @@
 import Backbone from 'backbone';
-import PictureModel from './picture_model';
+import SingleModel from './single_model';
 import {APP_URL} from '../parse_data';
 
 
 let PicturesCollection = Backbone.Collection.extend({
     url: APP_URL,
-    model: PictureModel,
+    model: SingleModel,
 
     parse(data) {
       return data.results;

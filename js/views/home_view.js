@@ -1,76 +1,57 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import SingleModel from '../resources';
 
-export default React.createClass({
+//export default React.createClass({
 
-// let HomeView = React.createClass({
-  lonePicClickHandler(id) {
-    this.props.onLonePicClick(id);
+let HomeView = React.createClass({
+  SelectHandler(id){
+    this.props.onImagesSelect(id);
   },
 
-  addPicClickHandler() {
-    this.props.onAddClick();
+  AddClickHandler() {
+    this.props.AddBtnClick();
   },
 
-  addBackHandler( ) {
-    this.props.onBackClick();
-  },
-
-  processData(data) {
+  displayAll(data) {
     return (
-      <div key={data.objectId} className="squares"
-      onClick={() => this.lonePicClickHandler(data.objectId)}>
-      <ul>  
-      <li><img src={data.Photos}></img></li>
-      </ul>
-   </div> 
-    );
+      <div className="thumbnails" key={data.objectId}>
+        <img className="collection-display" src={data.Photos} width="200px" height="200px" 
+          id={data.objectId} onClick={() => this.SelectHandler(data.objectId)}/>
+      </div>
+    );  
   },
 
-    render() {
-      return (
-        <div className="homePage">
+  render() {
+    return (
+        <div className="collection-view">
+          <div className="collection-header">
+            <h2 className="header-text">The Fabulous World of Grapes</h2>
+            <img className="header-image" src="http://www.amorosa.it/images/h-vineyard-cellar.jpg"/>
+          </div> 
 
-          <div className="topbox">
-            <div className="theme">
-             <img src="http://www.amorosa.it/images/h-vineyard-cellar.jpg"/>
-            </div> 
-
-          <div className="navBar">
-           <ul>
-             <li onClick={() => this.addBackHandler()}>
-              <button>Home</button>
-              </li>
-             <li onClick={() => this.addBackHandler()}>
-              <button>Grape</button>
-              </li>
-             <li onClick={() => this.addBackHandler()}>
-               <button>About</button>
-               </li>                
-             <li onClick={() => this.addPicClickHandler()}>
-               <button>Update Grape Info</button>
-               </li>
-             <li onClick={() => this.addBackHandler()}>
-               <button>Upload New Photo</button>
-               </li>   
-            </ul>
-           </div>
+          <div className="buttons">
+            <button onClick={this.AddClickHandler} className="add">Add</button>
           </div>
           
-          <div className="imageSquares">{this.props.pictures.map(this.processData)}>
-            <div className="squares">
-            </div>
-          </div>    
+          <hr/>
 
-          <div className="footer">
-           <p>Vince Dolan</p>
-           <p>2015</p>
+          <div className="collection-display">{this.props.data.map(this.displayAll)} 
           </div>
-      </div>  
 
+          <hr/>
+
+        </div>         
+      
      );
-    }
-   }); 
+  }
+}); 
+
+
+
+
+ 
+     
 
  
 

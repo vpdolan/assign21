@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
-import {APP_URL} from '../parse_data';
+import {APP_URL} from '../parse_data.js';
 
-let PictureModel = Backbone.Model.extend({
+let SingleModel = Backbone.Model.extend({
     urlRoot: APP_URL,
     
     idAttribute:  'objectId',
@@ -13,4 +13,4 @@ let PictureModel = Backbone.Model.extend({
 
 });
 
-export default PictureModel;
+export default SingleModel;
