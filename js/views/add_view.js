@@ -32,12 +32,12 @@ let AddView = React.createClass({
         <form className="add-form">
           <div>
             <label className="add-form-label">Title:</label>
-            <input className="winename" type="text" placeholder="Please Enter Wine Name"/>
+            <input className="wineTitle" type="text" placeholder="Please Enter Wine Name"/>
           </div>
 
           <div>
             <label className="add-form-label">Photo:</label>
-            <input className="photo" type="text" placeholder="Please Enter Photo URL"/>
+            <input className="photos" type="text" placeholder="Please Enter Photo URL"/>
           </div> 
           
           <div>

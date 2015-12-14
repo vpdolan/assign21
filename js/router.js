@@ -139,7 +139,7 @@ let Router = Backbone.Router.extend({
 
         let model = new SingleModel ({
           Title        :  newUserTitle,
-          Photos       :  newPhotos,
+          Photos       :  newUserPhotos,
           Terroir      :  newUserTerroir,
           Food         :  newUserFood,
           Temp         :  newUserTemp,

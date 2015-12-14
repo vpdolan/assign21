@@ -337,7 +337,7 @@ var Router = _backbone2['default'].Router.extend({
 
         var model = new _resourcesSingle_model2['default']({
           Title: newUserTitle,
-          Photos: newPhotos,
+          Photos: newUserPhotos,
           Terroir: newUserTerroir,
           Food: newUserFood,
           Temp: newUserTemp,
@@ -427,7 +427,7 @@ var AddView = _react2['default'].createClass({
                 { className: 'add-form-label' },
                 'Title:'
               ),
-              _react2['default'].createElement('input', { className: 'winename', type: 'text', placeholder: 'Please Enter Wine Name' })
+              _react2['default'].createElement('input', { className: 'wineTitle', type: 'text', placeholder: 'Please Enter Wine Name' })
             ),
             _react2['default'].createElement(
               'div',
@@ -437,7 +437,7 @@ var AddView = _react2['default'].createClass({
                 { className: 'add-form-label' },
                 'Photo:'
               ),
-              _react2['default'].createElement('input', { className: 'photo', type: 'text', placeholder: 'Please Enter Photo URL' })
+              _react2['default'].createElement('input', { className: 'photos', type: 'text', placeholder: 'Please Enter Photo URL' })
             ),
             _react2['default'].createElement(
               'div',
