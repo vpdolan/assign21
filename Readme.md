@@ -2,7 +2,6 @@
 
 This project can be found on the web at: world-of-grapes.surge.sh
 
-> I am your Readme.md file, you should probably update me.
 
 
 ## Usage
