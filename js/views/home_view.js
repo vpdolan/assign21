@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 import SingleModel from '../resources';
 
 //export default React.createClass({
 
 let HomeView = React.createClass({
+  
   SelectHandler(id){
-    this.props.onImagesSelect(id);
+    this.props.onImageSelect(id);
   },
 
   AddClickHandler() {
@@ -41,11 +41,13 @@ let HomeView = React.createClass({
 
           <hr/>
 
-        </div>         
+        </div>           
       
      );
   }
 }); 
+
+export default HomeView;
 
 
 

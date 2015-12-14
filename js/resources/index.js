@@ -1,8 +1,11 @@
-import PicturesCollection from './pictures_collection';
 import SingleModel from './single_model';
+import PicturesCollection from './pictures_collection';
+
 
 export {
-  PicturesCollection,
-  SingleModel
+  
+  SingleModel,
+  PicturesCollection
+  
 
 };

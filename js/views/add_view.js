@@ -1,18 +1,18 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 
 let AddView = React.createClass({
-  HomeClickHandler (){
+  
+  HomeClickHandler(){
     this.props.homeBtnClick();
   },
 
   SaveClickHandler(event){
     event.preventDefault();
-    console.log("button clicked");
+    console.log('button clicked');
     this.props.saveBtnClick();
   },
 
-  render () {
+  render() {
     return (
   <div className="singleImage">
     <div className="collection-header">
@@ -27,7 +27,7 @@ let AddView = React.createClass({
     <hr/>  
      
     <div className="detailsAdd">
-      <p>Add New Selection</p>
+      <p>Add A New Selection</p>
       <div className="add-container">
         <form className="add-form">
           <div>
@@ -41,8 +41,8 @@ let AddView = React.createClass({
           </div> 
           
           <div>
-            <label className="add-form-label">Terrior:</label>
-            <input className="terrior" type="text" placeholder="Country/Region"/>
+            <label className="add-form-label">Terroir:</label>
+            <input className="terroir" type="text" placeholder="Country/Region"/>
           </div>
           
           <div> 
@@ -52,11 +52,11 @@ let AddView = React.createClass({
 
           <div>
             <label className="add-form-label">Serve Temp:</label>
-            <input className="servetemp" type="text" placeholder="Ideal Serving Temperature"/>
+            <input className="temp" type="text" placeholder="Ideal Serving Temp. . ."/>
           </div> 
 
           <div>
-            <label className="add-form-label">Description:</label>
+            <label className="add-form-label-desc">Description:</label>
             <textarea className="description" type="text" placeholder="Brief Overview"/>
           </div>   
                        

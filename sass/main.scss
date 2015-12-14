@@ -5,116 +5,228 @@
 body {
   background: #e2ebf3;
   font-family: 'Libre Baskerville', serif;
-
 }
 
-li {
-  list-style: none;
+//Home View Layout
+.header-text {
+  vertical-align: top;
+  border-radius: 15px;
+  border: 2px solid #850BFF;
+  color: white;
+  height: 100px;
+  background-color: #a64dff;
 }
 
 h2 {
-  background-color: #6600CC;
-  border-radius: 20px;
-  border: 5px solid #850BFF;
-  color: white;
   text-align: center;
-  height: 90px;
-  padding-top: 25px;
-
+  padding-top: 30px;
+  font-size: 2em;
 }
 
-.homePage {
-  //margin-left: 50px;
-  //margin-right: 50px;
+img.header-image {
   width: 100%;
-  list-style: none;
-  text-decoration: none;
-  //border: 5px solid #850BFF;
-  //border-radius: 20px;
-  //margin-top: 
-  //margin: 0 auto;
-  text-align: center;
-
-}
-
-.theme img {
-  width: 1292px;
-  height: 223px;
+  height: 275px;
   border: 2px solid #850BFF;
- 
 }
 
-.navBar {
-  ul {
-    text-align: center;
-    color: blue;
-  
-  }
+.collection-header {
+  margin: 1%;
+}
 
-  li {
-    display: inline-block;
-    padding-right: 10px;
-    list-style: none;
-  }  
-    
-    li:hover{
-        color: #6EB7FF;
-    }
+.buttons {
+  margin: 0;
+  padding-left: 12px;
+  color: green;
+}
 
-    li:active {
-      color: #3366FF;
-    }
-  }
+.thumbnails {
+  display: inline-block;
+  margin-left: 15px;
+  margin-top: 25px;
+  //border: 1px solid #00004d;
+  //border: 1px solid #446600;
+}
+
+.add {
+  background-color: #ccebff;
+  border-radius: 5px;
+  border: 1px solid #446600;
+  margin-left: 45px;
+}
+
+hr {
+  border: 1px solid #446600;
+}
+
+.edit {
+  background-color: #ccebff;
+  border-radius: 5px;
+  border: 1px solid #446600;
+  margin-left: 10px;
+}
+
+.home {
+  background-color: #ccebff;
+  border-radius: 5px;
+  border: 1px solid #446600;
+  margin-left: 45px;
+}
+
+.collection-display {
+  border-radius: 15px;
+  display: inline-block;
+  margin: 2% 10%;
+}
+
+.singleImage {
+  margin: 2%;
+  border: 1px solid #850BFF;
+}
+
+.single {
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.details {
+  display: inline-block;
+  width: 50%;
+  margin-left: 5%;
+  vertical-align: top;
+}
 
 
-.imageSquares {
+
+//Add View Layout
+
+.detailsAdd {
+  width: 100%;
+  margin: 5% auto;
   @include outer-container;
-  //display: block;
-  //float: left;
-  list-style: none;
-  margin-top: 45px;
-  margin-left: 90px;
-        
-  
 }
 
-.squares {
-  list-style: none;
-  @include span-columns (3);
-   @include omega (4n);
-   //margin-bottom: 5px;
-   //min-height: 175px;
-   //max-height: 400px;
-   //height: 225px;
-   overflow: scroll;
-   text-align: center;
-
- }
-   
-   .squares img {
-    height: 275px;    
-    width: 250px;
-    overflow: scroll;
-    
-   }
-
-   .squares img:hover {
-    border: 4px solid red;
-   }
-
-   .squares img:active {
-    border: 4px solid #FFFF00;
-   }
-
-   form {
-    
-   }
- 
-
-            
-.footer {
-  font-size: .75em;
-  color: red;
+.detailsAdd p {
+  color: blue;
   text-align: center;
-
+  margin-left: 80px;
 }
+
+.add-container {
+  border: 2px solid #446600;
+  @include span-columns(5);
+  @include shift(4);
+}
+
+.add-form-label {
+  line-height: 30px;
+  display: inline-block;
+  margin: 10px auto;
+  width: 250px;
+  text-align: left;
+}
+
+.add-form {
+  width: 100%;
+  display: inline-block;
+  margin: 5% auto;
+}
+
+.add-form-label {
+  line-height: 30px;
+  display: inline-block;
+  padding-left: 5%;
+  width: 200px;
+}
+
+.add-form-label-desc {
+  line-height: 45px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 21px;
+}
+
+.description {
+  margin-top: 15px;
+  margin-left: 77px;
+}
+
+.save {
+  background-color: #ccebff;
+  border-radius: 5px;
+  border: 1px solid #446600;
+  margin-left: 20px;
+  color: green;
+}
+
+//Edit View Layout
+
+p {
+  text-align: center;
+}
+
+.detailsEdit {
+  width: 100%;
+  margin: 5% auto;
+  @include outer-container;
+}
+
+.div {
+  display: block;  
+}
+
+.wineTitle, .photos, .terroir, .id, .temp, .food {
+  width: 220px;
+  line-height: 30px;
+  margin-bottom: 5px;
+}
+
+.description {
+  width: 220px;
+  height: 150px;
+  margin-left: 73px;
+}
+
+
+.id {
+  background-color: #E2EBF3;
+  border: none;
+  display: none;
+}
+
+.edit-container {
+  border: 1px solid black;
+  @include span-columns(6);
+  @include shift(3); 
+}
+
+.edit-form {
+  width: 100%;
+  display: inline-block;
+  margin: 10% auto;
+}
+
+.edit-form-label {
+  line-height: 30px;
+  display: inline-block;
+  padding-left: 5%;
+  width: 200px;
+}
+
+.edit-form-label-desc {
+  line-height: 30px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 25px;
+}
+
+.btn {
+  margin: 5% auto;
+  width: 100%;
+  text-align: center;
+}
+
+.save {
+  margin: 5% auto;
+}
+            
+

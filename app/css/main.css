@@ -2028,85 +2028,203 @@ body {
   background: #e2ebf3;
   font-family: 'Libre Baskerville', serif; }
 
-li {
-  list-style: none; }
+.header-text {
+  vertical-align: top;
+  border-radius: 15px;
+  border: 2px solid #850BFF;
+  color: white;
+  height: 100px;
+  background-color: #a64dff; }
 
 h2 {
-  background-color: #6600CC;
-  border-radius: 20px;
-  border: 5px solid #850BFF;
-  color: white;
   text-align: center;
-  height: 90px;
-  padding-top: 25px; }
+  padding-top: 30px;
+  font-size: 2em; }
 
-.homePage {
+img.header-image {
   width: 100%;
-  list-style: none;
-  text-decoration: none;
-  text-align: center; }
-
-.theme img {
-  width: 1292px;
-  height: 223px;
+  height: 275px;
   border: 2px solid #850BFF; }
 
-.navBar ul {
-  text-align: center;
-  color: blue; }
+.collection-header {
+  margin: 1%; }
 
-.navBar li {
+.buttons {
+  margin: 0;
+  padding-left: 12px;
+  color: green; }
+
+.thumbnails {
   display: inline-block;
-  padding-right: 10px;
-  list-style: none; }
+  margin-left: 15px;
+  margin-top: 25px; }
 
-.navBar li:hover {
-  color: #6EB7FF; }
+.add {
+  background-color: #ccebff;
+  border-radius: 5px;
+  border: 1px solid #446600;
+  margin-left: 45px; }
 
-.navBar li:active {
-  color: #3366FF; }
+hr {
+  border: 1px solid #446600; }
 
-.imageSquares {
+.edit {
+  background-color: #ccebff;
+  border-radius: 5px;
+  border: 1px solid #446600;
+  margin-left: 10px; }
+
+.home {
+  background-color: #ccebff;
+  border-radius: 5px;
+  border: 1px solid #446600;
+  margin-left: 45px; }
+
+.collection-display {
+  border-radius: 15px;
+  display: inline-block;
+  margin: 2% 10%; }
+
+.singleImage {
+  margin: 2%;
+  border: 1px solid #850BFF; }
+
+.single {
+  border-radius: 5px;
+  display: inline-block; }
+
+.details {
+  display: inline-block;
+  width: 50%;
+  margin-left: 5%;
+  vertical-align: top; }
+
+.detailsAdd {
+  width: 100%;
+  margin: 5% auto;
   max-width: 68em;
   margin-left: auto;
-  margin-right: auto;
-  list-style: none;
-  margin-top: 45px;
-  margin-left: 90px; }
-  .imageSquares::after {
+  margin-right: auto; }
+  .detailsAdd::after {
     clear: both;
     content: "";
     display: table; }
 
-.squares {
-  list-style: none;
+.detailsAdd p {
+  color: blue;
+  text-align: center;
+  margin-left: 80px; }
+
+.add-container {
+  border: 2px solid #446600;
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 23.23176%;
-  overflow: scroll;
-  text-align: center; }
-  .squares:last-child {
+  width: 40.29137%;
+  margin-left: 34.11922%; }
+  .add-container:last-child {
     margin-right: 0; }
-  .squares:nth-child(4n) {
-    margin-right: 0; }
-  .squares:nth-child(4n+1) {
-    clear: left; }
 
-.squares img {
-  height: 275px;
+.add-form-label {
+  line-height: 30px;
+  display: inline-block;
+  margin: 10px auto;
   width: 250px;
-  overflow: scroll; }
+  text-align: left; }
 
-.squares img:hover {
-  border: 4px solid red; }
+.add-form {
+  width: 100%;
+  display: inline-block;
+  margin: 5% auto; }
 
-.squares img:active {
-  border: 4px solid #FFFF00; }
+.add-form-label {
+  line-height: 30px;
+  display: inline-block;
+  padding-left: 5%;
+  width: 200px; }
 
-.footer {
-  font-size: .75em;
-  color: red;
+.add-form-label-desc {
+  line-height: 45px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 21px; }
+
+.description {
+  margin-top: 15px;
+  margin-left: 77px; }
+
+.save {
+  background-color: #ccebff;
+  border-radius: 5px;
+  border: 1px solid #446600;
+  margin-left: 20px;
+  color: green; }
+
+p {
   text-align: center; }
+
+.detailsEdit {
+  width: 100%;
+  margin: 5% auto;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .detailsEdit::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.div {
+  display: block; }
+
+.wineTitle, .photos, .terroir, .id, .temp, .food {
+  width: 220px;
+  line-height: 30px;
+  margin-bottom: 5px; }
+
+.description {
+  width: 220px;
+  height: 150px;
+  margin-left: 73px; }
+
+.id {
+  background-color: #E2EBF3;
+  border: none;
+  display: none; }
+
+.edit-container {
+  border: 1px solid black;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 25.58941%; }
+  .edit-container:last-child {
+    margin-right: 0; }
+
+.edit-form {
+  width: 100%;
+  display: inline-block;
+  margin: 10% auto; }
+
+.edit-form-label {
+  line-height: 30px;
+  display: inline-block;
+  padding-left: 5%;
+  width: 200px; }
+
+.edit-form-label-desc {
+  line-height: 30px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 25px; }
+
+.btn {
+  margin: 5% auto;
+  width: 100%;
+  text-align: center; }
+
+.save {
+  margin: 5% auto; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,17 +1,16 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 
 let EditView = React.createClass({
   
   getInitialState(){
-    return({
-      objectId   :  this.props.objectId,
-      Title      :  this.props.Title,
-      Terrior    :  this.props.Terrior,
-      Food       :  this.props.Food,
-      ServeTemp  :  this.props.ServeTemp,
-      Description:  this.props.Description,
-      Photos     :  this.props.Photos
+    return ({
+      objectId   :  this.props.data.objectId,
+      Title      :  this.props.data.Title,
+      Terroir    :  this.props.data.Terroir,
+      Food       :  this.props.data.Food,
+      Temp       :  this.props.data.Temp,
+      Description:  this.props.data.Description,
+      Photos     :  this.props.data.Photos
 
     });
 
@@ -31,23 +30,23 @@ let EditView = React.createClass({
     this.props.AddBtnClick();
   },
 
-  SaveClickHandler (event) {
+  SaveClickHandler(event) {
     event.preventDefault();
-    console.log("button clicked!");
+    console.log('button clicked!');
     this.props.saveBtnClick(
       this.state.objectId,
       this.state.Title,
-      this.state.Terrior,
+      this.state.Terroir,
       this.state.Food,
-      this.state.ServeTemp,
+      this.state.Temp,
       this.state.Description,
       this.state.Photos);
   },
 
-  updateName(event){
-    let wineName = event.target.value;
+  updateTitle(event){
+    let wineTitle = event.target.value;
     this.setState({
-      Title:wineName})    
+      Title:wineTitle})    
   },
 
   updatePhotos(event){
@@ -56,10 +55,10 @@ let EditView = React.createClass({
       Photos:photos})
   }, 
 
-  updateTerrior(event){
-    let terrior = event.target.value;
+  updateTerroir(event){
+    let terroir = event.target.value;
     this.setState({
-      Terrior:terrior})  
+      Terroir:terroir})  
   },
 
   updateFood(event){
@@ -68,10 +67,10 @@ let EditView = React.createClass({
     Food:food})
   },
 
-  updateServeTemp(event){
-  let serveTemp = event.target.value;
+  updateTemp(event){
+  let temp = event.target.value;
   this.setState({
-    ServeTemp:serveTemp})
+    Temp:temp})
   },
 
   updateDescription(event){
@@ -94,7 +93,7 @@ render() {
       <hr/>
 
       <div className="detailsEdit">
-        <p>Edit Selection</p>
+        <p>Edit Selection Form</p>
         <div className="edit-container">
           <form className="edit-form">
             <div>
@@ -103,7 +102,7 @@ render() {
 
             <div>
               <label className="edit-form-label">Title:</label>
-              <input className="winename" type="text" value={this.state.Title}
+              <input className="wineTitle" type="text" value={this.state.Title}
                 onChange={this.updateTitle}/>
             </div>  
 
@@ -114,9 +113,9 @@ render() {
             </div>   
 
             <div>
-              <label className="edit-form-label">Terrior:</label>
-              <input className="terrior" type="text" value={this.state.Terrior}
-                onChange={this.updateTerrior}/>
+              <label className="edit-form-label">Terroir:</label>
+              <input className="terroir" type="text" value={this.state.Terroir}
+                onChange={this.updateTerroir}/>
             </div>   
 
             <div>
@@ -127,17 +126,17 @@ render() {
 
             <div>
               <label className="edit-form-label">Serve Temp:</label>
-              <input className="winename" type="text" value={this.state.Title}
-                onChange={this.updateTitle}/>
+              <input className="temp" type="text" value={this.state.Temp}
+                onChange={this.updateTemp}/>
             </div> 
 
             <div>
-              <label className="edit-form-label">Description:</label>
+              <label className="edit-form-label-desc">Description:</label>
               <textarea className="description" type="text" value={this.state.Description}
                 onChange={this.updateDescription}/>
             </div>
 
-            <div>
+            <div className="btn">
               <button onClick={this.SaveClickHandler} className="save">Save Changes</button>
             </div>
           </form>

@@ -1,11 +1,7 @@
-import $ from 'jquery';
-import _ from 'underscore';
-import moment from 'moment';
-
 import React from 'react';
 import ReactDom from 'react-dom';
-import './ajax_setup';
 import Router from './router';
+import './ajax_setup';
 
 let appElement = document.querySelector('.app');
 

@@ -1,17 +1,17 @@
-import $ from 'jquery';
 import Backbone from 'backbone';
 import React from 'react';
 import ReactDom from 'react-dom';
-import _ from 'underscore';
 import './ajax_setup';
+import $ from 'jquery';
 
-import SingleModel from './resources/single_model';
-import PicturesCollection from './resources/pictures_collection';
 import HomeView from './views/home_view';
 import SingleView from './views/single_view';
 import EditView from './views/edit_view';
-import Spinner from './views/spinner';
 import AddView from './views/add_view';
+import Spinner from './views/spinner';
+
+import SingleModel from './resources/single_model';
+import PicturesCollection from './resources/pictures_collection';
 
 let Router = Backbone.Router.extend({
 
@@ -37,43 +37,43 @@ let Router = Backbone.Router.extend({
     ReactDom.render(component, this.el);
   },
     
-  goto(route){
+  goto(route) {
     this.navigate(route, {trigger: true});
   },
 
 //Home-View Route
 
-  home(){
+  home() {
     this.collection.fetch().then(() => {
       this.render(
           <HomeView
            id={this.collection.objectId}
-           onImageSelect={(id) => this.goto('Single/' + id)}
+           onImageSelect={(id) => this.goto("Single/" + id)}
            data={this.collection.toJSON()}
-           AddBtnClick={() => this.goto('addForm')}/>);
+           AddBtnClick={() => this.goto("addForm")}/>);
      });         
   },
 
 //Single-View Route
 
   showSingle(id){
-    let photos = this.collection.get(id);
+    let photo = this.collection.get(id);
 
-    if (photos) {
+    if (photo) {
       this.render (
         <SingleView
-        data={photos.toJSON()}
-        editBtnClick={ (id) => this.goto('editForm/' + id)}
-        homeBtnClick={ () => this.goto('')}/>);
+        data={photo.toJSON()}
+        editBtnClick={ (id) => this.goto("editForm/" + id)}
+        homeBtnClick={ () => this.goto("")}/>);
     }
 
     else {
-      photos = this.collection.add({objectId : id});
-      photos.fetch().then ( () => {
+      photo = this.collection.add({objectId : id});
+      photo.fetch().then ( () => {
         this.render(<SingleView
-          data={photos.toJSON()}
-          editBtnClick={ (id) => this.goto('editForm/' + id)}
-          homeBtnClick={ () => this.goto('')}/>);
+          data={photo.toJSON()}
+          editBtnClick={ (id) => this.goto("editForm/" + id)}
+          homeBtnClick={ () => this.goto("")}/>);
       });
     }
   },
@@ -84,42 +84,41 @@ let Router = Backbone.Router.extend({
     let getinfo = this.collection.get(id);
     
     if(getinfo) {
-      console.log('x', getinfo.toJSON());
+      console.log('A', getinfo.toJSON());
       this.render(<EditView
-        homeBtnClick={() => this.goto('')}
+        homeBtnClick={() => this.goto("")}
         data={getinfo.toJSON()}
-        saveBtnClick={(id,Title,Photos,Terrior,Food,ServeTemp,Description) => 
-          this.saveEditedData(id,Title,Photos,Terrior,Food,ServeTemp,Description)}/>);
+        saveBtnClick={(id,Title,Photos,Terroir,Food,Temp,Description) => 
+          this.saveEditedData(id,Title,Photos,Terroir,Food,Temp,Description)}/>);
     }
 
     else {
       getinfo = this.collection.add({objectId : id});
-      getinfo.fetch().then( () => {
-        console.log('y', getinfo.toJSON());
+      getinfo.fetch().then(() => {
+        console.log('B', getinfo.toJSON());
         this.render(<EditView
-          homeBtnClick={() => this.goto('')}
+          homeBtnClick={() => this.goto("")}
           data={getinfo.toJSON()}
-          saveBtnClick={(id,Title,Photos,Terrior,Food,ServeTemp,Description) => 
-          this.saveEditedData(id,Title,Photos,Terrior,Food,ServeTemp,Description)}/>);
+          saveBtnClick={(id,Title,Photos,Terroir,Food,Temp,Description) => 
+          this.saveEditedData(id,Title,Photos,Terroir,Food,Temp,Description)}/>);
       })
     }
-    console.log('logging to JSON', getinfo.toJSON());
   },
 
 //Updating Edits Route
 
-  saveEditedData(id,Title,Photos,Terrior,Food,ServeTemp,Description) {
+  saveEditedData(id,Title,Photos,Terroir,Food,Temp,Description) {
     this.collection.get(id).save({
       objectId     :  id,
       Title        :  Title,
       Photos       :  Photos,
-      Terrior      :  Terrior,
+      Terroir      :  Terroir,
       Food         :  Food,
-      ServeTemp    :  ServeTemp,
+      Temp         :  Temp,
       Description  :  Description
-    }).then( () => {
+    }).then(() => {
       alert('Changes Updated');
-      this.goto('');      
+      this.goto("");      
     });
   },
 
@@ -128,28 +127,29 @@ let Router = Backbone.Router.extend({
   showformAdd() {
     this.render(<AddView
       data={this.collection.toJSON()}
-      homeBtnClick={() => this.goto('')}
+      homeBtnClick={() => this.goto("")}
       saveBtnClick={() => {
-        let newUserTitle = document.querySelector('.title').value;
+        let newUserTitle = document.querySelector('.wineTitle').value;
         let newUserPhotos = document.querySelector('.photos').value;
-        let newUserTerrior = document.querySelector('.terrior').value;
+        let newUserTerroir = document.querySelector('.terroir').value;
         let newUserFood = document.querySelector('.food').value;
-        let newUserServeTemp = document.querySelector('.servetemp').value;
+        let newUserTemp = document.querySelector('.temp').value;
         let newUserDescription = document.querySelector('.description').value;
         console.log('new user', newUserTitle);
 
         let model = new SingleModel ({
           Title        :  newUserTitle,
-          Photos       :  newUserPhotos,
-          Terrior      :  newUserTerrior,
+          Photos       :  newPhotos,
+          Terroir      :  newUserTerroir,
           Food         :  newUserFood,
-          ServeTemp    :  Number(newUserServeTemp),
+          Temp         :  newUserTemp,
           Description  :  newUserDescription     
         });
+        console.log('new selection?');
 
-        model.save().then ( () => {
+        model.save().then(() => {
           alert('Your Selection Has Been Added. Thank you!');
-          this.goto('');
+          this.goto("");
 
         });  
       }
